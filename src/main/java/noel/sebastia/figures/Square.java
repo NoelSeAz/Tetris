@@ -34,13 +34,13 @@ public class Square {
     public void setY(int y){
         this.y = y;
     }
-    public int getIndexJ(int indexJ){
+    public int getIndexJ(){
         return indexJ;
     }
     public void setIndexJ(int indexJ){
         this.indexJ = indexJ;
     }
-    public int getIndexI(int indexI){
+    public int getIndexI(){
         return indexI;
     }
     public void setIndexI(int indexI){

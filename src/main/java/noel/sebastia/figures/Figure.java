@@ -6,12 +6,15 @@ import java.awt.Graphics;
 
 import noel.sebastia.enummanager.EnumFigure;
 import noel.sebastia.segregation.Drawable;
+import noel.sebastia.enummanager.Position;
 import noel.sebastia.utils.Constants;
 public abstract class Figure implements Drawable{
     //New Figure with Shape
     private LinkedList<Square> squares = new LinkedList<>();
     //Color of the Figure
     private Color color;
+    //
+    private Position position;
     //Dimensions of the Figure
     private int width, height;
     //Private Coordiantes for the Figure
@@ -20,9 +23,12 @@ public abstract class Figure implements Drawable{
     private EnumFigure figureType;
 
     public Figure() {
+        this.position = Position.randomDirection();
     }
     //Constructor for regular figure
     public Figure(Color color, EnumFigure figureType){
+        //Default position facing up
+        this.position = Position.UP;
         this.color = color;
         this.baseX = Constants.BOARD_X;
         this.baseY = Constants.BOARD_Y;
@@ -31,8 +37,9 @@ public abstract class Figure implements Drawable{
         this.width = Constants.SQUARED_WIDTH;
         this.height = Constants.SQUARED_HEIGHT;
     }
-    //Constructor for figure inside an specific location and size
+    //Constructor for figure inside a specific location and size
     public Figure(Color color, int baseX, int baseY, int width, int height, EnumFigure figureType){
+        this.position = Position.UP;
         this.color = color;
         this.baseX = baseX;
         this.baseY = baseY;
@@ -64,6 +71,12 @@ public abstract class Figure implements Drawable{
     }
     public void setColor(Color color){
         this.color = color;
+    }
+    public Position getPosition(){
+        return position;
+    }
+    public void setPosition(Position position){
+        this.position = position;
     }
     public int getWidth(){
         return width;

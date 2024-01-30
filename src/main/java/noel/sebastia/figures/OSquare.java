@@ -4,11 +4,12 @@ import java.awt.Color;
 import java.util.LinkedList;
 
 import noel.sebastia.enummanager.EnumFigure;
+import noel.sebastia.enummanager.Position;
 import noel.sebastia.utils.Constants;
 
 public class OSquare extends Figure {
     public OSquare(){
-        super(Color.BLACK, EnumFigure.O_SQUARE);
+        super(Constants.O_Quare, EnumFigure.O_SQUARE);
         this.setSquareLocation(Constants.COLUMNS/3, 0);
     }
     public OSquare(Color color, int baseX, int baseY, int squareSizeX, int squareSizeY){
@@ -28,6 +29,5 @@ public class OSquare extends Figure {
     }
     @Override
     public void setNextPosition(){
-
     }
 }
