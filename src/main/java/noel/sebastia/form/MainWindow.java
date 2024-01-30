@@ -83,5 +83,8 @@ public class MainWindow extends JFrame implements Runnable,KeyListener {
         if(e.getKeyCode() == KeyEvent.VK_R){
             this.game.resetGame();
         }
+        if(e.getKeyCode() == KeyEvent.VK_Q){
+            System.exit(0);
+        }
     }
 }

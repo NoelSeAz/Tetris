@@ -13,17 +13,20 @@ import noel.sebastia.enummanager.EnumFigure;
 
 public class TetrisBoard implements Drawable{
     private Square[][] board = new Square[Constants.COLUMNS][Constants.ROWS];
-    private ViewFigure currentView, nextView;
+    private ViewFigure nextView;
     private Figure currentFigure, nextFigure;
     private int baseX, baseY;
+    private int panelX, panelY, panelSpace;
     private int gameSpeed = 180;
     private boolean isGameOver = false, isRotating = false, stop = false;
     private int points = 0;
     public TetrisBoard(){
         this.baseX = Constants.BOARD_X;
         this.baseY = Constants.BOARD_Y;
-        this.currentView = new ViewFigure(baseX, (baseY - Constants.HEIGHT_OF_VIEW) - 20);
-        this.nextView = new ViewFigure(baseX + Constants.BOARD_WIDTH - Constants.WIDTH_OF_VIEW, (baseY - Constants.HEIGHT_OF_VIEW) - 20);
+        this.panelX = Constants.X_LEFT_PANEL;
+        this.panelY = Constants.Y_LEFT_PANEL;
+        this.panelSpace = Constants.SPACE_BTW_PANELS;
+        this.nextView = new ViewFigure(panelX, panelY + 100);
         this.addNewFigure();
     }
     public void addNewFigure(){
@@ -34,7 +37,6 @@ public class TetrisBoard implements Drawable{
             this.currentFigure = SquareFactory.getRegularFigure();
             this.nextFigure = SquareFactory.getRegularFigure();
         }
-        this.currentView.setFigure(SquareFactory.getViewFigure(currentFigure.getFigureType(), currentView.getX(), currentView.getY(), Constants.WIDTH_OF_SQUARE_VIEW, Constants.HEIGHT_OF_SQUARE_VIEW));
         this.nextView.setFigure(SquareFactory.getViewFigure(nextFigure.getFigureType(), nextView.getX(), nextView.getY(), Constants.WIDTH_OF_SQUARE_VIEW, Constants.HEIGHT_OF_SQUARE_VIEW));
         this.validateCurrentLocation();
     }
@@ -211,7 +213,6 @@ public class TetrisBoard implements Drawable{
     public void paintElement(Graphics g){
         g.setColor(Color.white);
         g.fillRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_WIDTH);
-        this.currentView.paintElement(g);
         this.nextView.paintElement(g);
         g.setColor(Color.black);
         g.fill3DRect(this.baseX, this.baseY, Constants.BOARD_WIDTH, Constants.BOARD_HEIGHT, false);
@@ -228,7 +229,9 @@ public class TetrisBoard implements Drawable{
         g.setColor(Color.BLACK);
 
         g.setFont(Constants.FONT);
-        g.drawString("Points: " + this.points, this.currentView.getX() + Constants.WIDTH_OF_VIEW, this.currentView.getY() + Constants.FONT_SIZE);
+        g.drawString("Points: ", panelX-40, panelY-20);
+        String formattedPoints = String.format("%06d", this.points);
+        g.drawString(formattedPoints, panelX-45, panelY+50);
         g.setColor(Color.white);
     }
     public void pauseOrResume() {

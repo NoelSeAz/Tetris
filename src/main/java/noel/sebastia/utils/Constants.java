@@ -9,10 +9,13 @@ public class Constants {
     public static final int BOARD_HEIGHT = 700;
     public static final int COLUMNS = 10;
     public static final int ROWS = 20;
+    public static final int X_LEFT_PANEL = 1200;
+    public static final int Y_LEFT_PANEL = 200;
+    public static final int SPACE_BTW_PANELS = 50;
     public static final int SQUARED_WIDTH = BOARD_WIDTH/COLUMNS;
     public static final int SQUARED_HEIGHT = BOARD_HEIGHT/ROWS;
-    public static final int WIDTH_OF_VIEW = (int)(Constants.BOARD_WIDTH * 0.3);
-    public static final int HEIGHT_OF_VIEW = (int)(Constants.BOARD_WIDTH * 0.1);
+    public static final int WIDTH_OF_VIEW = (int)(Constants.BOARD_WIDTH * 0.6);
+    public static final int HEIGHT_OF_VIEW = (int)(Constants.BOARD_WIDTH * 0.2);
     public static final int WIDTH_OF_SQUARE_VIEW = (int)(WIDTH_OF_VIEW * 0.2);
     public static final int HEIGHT_OF_SQUARE_VIEW = (int)(HEIGHT_OF_VIEW * 0.5);
     public static final int SCREEN_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
