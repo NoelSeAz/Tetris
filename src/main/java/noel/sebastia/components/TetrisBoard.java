@@ -38,10 +38,11 @@ public class TetrisBoard implements Drawable{
         this.nextView.setFigure(SquareFactory.getViewFigure(nextFigure.getFigureType(), nextView.getX(), nextView.getY(), Constants.WIDTH_OF_SQUARE_VIEW, Constants.HEIGHT_OF_SQUARE_VIEW));
         this.validateCurrentLocation();
     }
-    private void validateCurrentLocation(){
-        for(Square square: this.currentFigure.getSquares()){
-            if(this.board[square.getIndexI()][square.getIndexJ()] != null){
+    private void validateCurrentLocation() {
+        for(Square square: this.currentFigure.getSquares()) {
+            if(this.board[square.getIndexI()][square.getIndexJ()] != null) {
                 System.out.println("GAME OVER!!");
+                this.isGameOver = true;
                 break;
             }
         }
